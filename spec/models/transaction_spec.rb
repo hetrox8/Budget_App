@@ -24,4 +24,3 @@ RSpec.describe Transaction do
     expect(transaction).not_to be_valid
   end
 end
-

@@ -4,4 +4,3 @@ class UpdateCategoriesTable < ActiveRecord::Migration[7.0]
     add_column :categories, :icon_url, :string, default: ''
   end
 end
-

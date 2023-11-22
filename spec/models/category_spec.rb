@@ -18,4 +18,3 @@ RSpec.describe Category do
     expect(category).not_to be_valid
   end
 end
-
