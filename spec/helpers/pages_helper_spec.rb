@@ -7,4 +7,3 @@ RSpec.describe PagesHelper do
     end
   end
 end
-
