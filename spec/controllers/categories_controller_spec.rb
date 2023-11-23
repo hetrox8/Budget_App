@@ -7,8 +7,8 @@ RSpec.describe CategoriesController, type: :controller do
     it 'assigns @categories' do
       user = User.create(name: 'John Doe', email: 'test@example.com', password: 'password')
       sign_in user
-      category1 = Category.create(name: 'Category 1', user: user, icon: 'category-icon1')
-      category2 = Category.create(name: 'Category 2', user: user, icon: 'category-icon2')
+      category1 = Category.create(name: 'Category 1', user:, icon: 'category-icon1')
+      category2 = Category.create(name: 'Category 2', user:, icon: 'category-icon2')
 
       get :index
       expect(assigns(:categories)).to eq([category1, category2])
@@ -38,7 +38,7 @@ RSpec.describe CategoriesController, type: :controller do
       it 'creates a new category' do
         user = User.create(name: 'John Do', email: 'test@example.com', password: 'password')
         sign_in user
-        category_params = { name: 'New Category' }
+        category_params = { name: 'New Category', user_id: user.id }
 
         expect do
           post :create, params: { category: category_params }
@@ -48,7 +48,7 @@ RSpec.describe CategoriesController, type: :controller do
       it 'redirects to categories#index' do
         user = User.create(name: 'John Do', email: 'test@example.com', password: 'password')
         sign_in user
-        category_params = { name: 'New Category' }
+        category_params = { name: 'New Category', user_id: user.id }
 
         post :create, params: { category: category_params }
         expect(response).to redirect_to(categories_path)
@@ -59,7 +59,7 @@ RSpec.describe CategoriesController, type: :controller do
       it 'renders the new template' do
         user = User.create(name: 'John Do', email: 'test@example.com', password: 'password')
         sign_in user
-        category_params = { name: '' }
+        category_params = { name: '', user_id: user.id }
 
         post :create, params: { category: category_params }
         expect(response).to render_template(:new)
