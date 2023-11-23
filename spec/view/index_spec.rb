@@ -21,4 +21,3 @@ RSpec.describe 'categories/index', type: :view do
     end
   end
 end
-

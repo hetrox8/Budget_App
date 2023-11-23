@@ -25,4 +25,3 @@ RSpec.describe 'transactions/new', type: :view do
     end
   end
 end
-
