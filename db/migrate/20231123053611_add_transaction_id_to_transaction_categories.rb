@@ -1,5 +1,6 @@
-class AddTransactionIdToTransactionCategories < ActiveRecord::Migration[6.1]
+class AddCategoryIdToTransactionCategories < ActiveRecord::Migration[7.0]
   def change
-    change_column_null :transaction_categories, :transaction_id, false
+    add_column :transaction_categories, :category_id, :bigint
+    
   end
 end
