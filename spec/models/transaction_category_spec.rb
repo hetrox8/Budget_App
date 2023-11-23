@@ -1,3 +1,4 @@
+
 # spec/models/transaction_category_spec.rb
 
 require 'rails_helper'
