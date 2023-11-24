@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @categories = current_user.categories.includes(:transactions)
+    @user = current_user
+    @categories = @user.categories.includes(:transactions)
   end
 
   def new
@@ -9,7 +12,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.user_id = current_user.id
+    @category.user = current_user
 
     if @category.save
       redirect_to categories_path
@@ -21,6 +24,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :icon_url)
+    params.require(:category).permit(:name, :icon_url, :user_id)
   end
 end
